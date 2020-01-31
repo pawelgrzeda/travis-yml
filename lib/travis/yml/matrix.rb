@@ -118,6 +118,9 @@ module Travis
         def excluded?(row)
           excluded.any? do |excluded|
             next unless excluded.respond_to?(:all?)
+            p [:excluded, excluded]
+            p [:data, data]
+            p [:result, Condition.new(excluded, data).accept?]
             next unless Condition.new(excluded, data).accept?
             except(excluded, :if).all? { |key, value| wrap(row[key]) == wrap(value) }
           end
