@@ -44,7 +44,7 @@ describe Travis::Yml::Web::App, 'POST /configs' do
   end
 
   it do
-    expect(body[:matrix]).to eq [
+    expect(body[:jobs]).to eq [
       script: ['./one']
     ]
   end

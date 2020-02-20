@@ -53,7 +53,7 @@ module Travis
           {
             raw_configs: configs.map(&:to_h),
             config: config,
-            matrix: jobs,
+            jobs: jobs,
             stages: stages,
             messages: msgs.messages,
             full_messages: msgs.full_messages
@@ -113,7 +113,7 @@ module Travis
 
           def ctx
             @ctx ||= Ctx.new(data, opts).tap do |ctx|
-              ctx.repos[repo.slug] = repo if repo.token
+              ctx.repos[repo.slug] = repo
             end
           end
 
